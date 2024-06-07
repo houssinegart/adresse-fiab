@@ -17,7 +17,8 @@ raw_adresse = ApiFunction.get_dico_from_data(data)
 
 
 st.header("Reponse API BAN")
-st.json(raw_adresse)
+if len(adresse)>0:
+    st.json(raw_adresse)
 
 
 
