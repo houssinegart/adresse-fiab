@@ -85,13 +85,13 @@ def get_dico_from_data(data):
         context = data.get("features",{})[0].get("properties",{}).get("context")
         nom_commune = data.get("features",{})[0].get("properties",{}).get("city")
         return {
-            "ban_score" : round(score,2),
-            "ban_code_insee" : city_code,
-            "ban_code_postal" : code_postal,
-            "ban_label" : label,
-            "ban_numero" : numero,
-            "ban_rue" : rue,
-            "ban_nom_commune" : nom_commune,
+            "score" : round(score,2),
+            "code_insee" : city_code,
+            "code_postal" : code_postal,
+            "label" : label,
+            "numero" : numero,
+            "rue" : rue,
+            "nom_commune" : nom_commune,
             "longitude": longitude,
             "latitude" : latitude
                 }
