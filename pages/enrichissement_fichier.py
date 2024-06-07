@@ -51,18 +51,17 @@ if uploaded_file :
 
                 for index, row in df.iterrows():
                     # pause tous les 40 appels
-                    if index % 40 == 0 and index != 0:
-                        time.sleep(2)
+                    if index % 44 == 0 and index != 0:
+                        time.sleep(1.1)
                         st.write(f"{index + 1} adresses traitées ...")
+
                     adresse = str(row[1]) + " " + str(row[2]) + " " + str(row[3]) + " " + str(row[4])
-
-
-
                     data = ApiFunction.appel_api_raw_ban(adresse)
                     if data :
-                        dico = ApiFunction.get_dico_from_data(data)
-                        for col in new_col:
-                            df.at[index, col] = dico.get(col)
+                        if len(data["features"])>0:
+                            dico = ApiFunction.get_dico_from_data(data)
+                            for col in new_col:
+                                df.at[index, col] = dico.get(col)
 
                 for index, row in df.iterrows():
                     depart_init = str(row[3])[0:2]
@@ -71,9 +70,10 @@ if uploaded_file :
                         adresse = str(row[1]) + " " + str(row[2]) + " " + str(row[4])
                         data = ApiFunction.appel_api_raw_ban(adresse)
                         if data :
-                            dico = ApiFunction.get_dico_from_data(data)
-                            for col in new_col:
-                                df.at[index, col] = dico.get(col)
+                            if len(data["features"])>0:
+                                dico = ApiFunction.get_dico_from_data(data)
+                                for col in new_col:
+                                    df.at[index, col] = dico.get(col)
 
 
                 st.success(f'{nb_lignes} lignes chargées ! (max autorisé : {limite_max})')
