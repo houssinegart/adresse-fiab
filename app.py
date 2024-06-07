@@ -49,7 +49,7 @@ with col2:
 
 st.markdown("## rechercher plusieurs adresses ")
 
-limite_max = 200 # pas plus de 200 lignes par fichier
+limite_max = 10000 # pas plus de 200 lignes par fichier
 map = False
 
 uploaded_file = st.file_uploader("insérer un fichier texte avec les adresses à rechercher  ", type = "csv")
