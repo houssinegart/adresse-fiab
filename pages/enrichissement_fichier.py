@@ -52,6 +52,10 @@ if uploaded_file :
                 for index, row in df.iterrows():
                     adresse = str(row[1]) + " " + str(row[2]) + " " + str(row[3]) + " " + str(row[4])
 
+                    # pause tous les 40 appels
+                    if index % 40 == 0 and index != 0:
+                        time.sleep(1.5)
+
                     data = ApiFunction.appel_api_raw_ban(adresse)
                     if data :
                         dico = ApiFunction.get_dico_from_data(data)
