@@ -50,11 +50,13 @@ if uploaded_file :
                     df[col]=None
 
                 for index, row in df.iterrows():
-                    adresse = str(row[1]) + " " + str(row[2]) + " " + str(row[3]) + " " + str(row[4])
-
                     # pause tous les 40 appels
                     if index % 40 == 0 and index != 0:
-                        time.sleep(1.5)
+                        time.sleep(2)
+                        st.write(f"{index + 1} adresses traitées ...")
+                    adresse = str(row[1]) + " " + str(row[2]) + " " + str(row[3]) + " " + str(row[4])
+
+
 
                     data = ApiFunction.appel_api_raw_ban(adresse)
                     if data :
